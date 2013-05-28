@@ -1,5 +1,5 @@
-<?php 
+<?php
 
-	echo elgg_view("input/submit", array("value" => elgg_echo("save")));
-
-?>
+	/**
+	 * Since we don't allow friends, no individual notifications can be managed
+	 */
