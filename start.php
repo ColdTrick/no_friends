@@ -2,6 +2,11 @@
 
 elgg_register_event_handler('init', 'system', 'no_friends_init');
 
+/**
+ * No friends init
+ *
+ * @return void
+ */
 function no_friends_init() {
 	// cleanup some menu's
 	elgg_register_plugin_hook_handler('register', 'menu:topbar', '\ColdTrick\NoFriends\Menus::topbarCleanup', 999999);

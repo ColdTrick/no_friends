@@ -77,6 +77,14 @@ class Menus {
 		return self::removeMenuItemsFromMenu($return_value, $forbidden_items);
 	}
 	
+	/**
+	 * Remove menu items
+	 *
+	 * @param \ElggMenuItem[] $items           total list of menu items
+	 * @param array           $forbidden_names menu names to remove
+	 *
+	 * @return \ElggMenuItem[]
+	 */
 	protected static function removeMenuItemsFromMenu($items, $forbidden_names) {
 		
 		foreach ($items as $index => $menu_item) {
