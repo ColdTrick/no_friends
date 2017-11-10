@@ -7,17 +7,23 @@ class Menus {
 	/**
 	 * Remove unwanted menu items from the menu
 	 *
-	 * @param string $hook         the name of the hook
-	 * @param string $type         the type of the hook
-	 * @param int    $return_value current return value
-	 * @param array  $params       supplied params
+	 * @param string          $hook         the name of the hook
+	 * @param string          $type         the type of the hook
+	 * @param \ElggMenuItem[] $return_value current return value
+	 * @param array           $params       supplied params
 	 *
-	 * @return array
+	 * @return void|\ElggMenuItem[]
 	 */
 	public static function titleCleanup($hook, $type, $return_value, $params) {
-		$forbidden_items = [
-			'groups:invite',
-		];
+		$forbidden_items = [];
+		
+		if (!elgg_is_active_plugin('group_tools')) {
+			$forbidden_items[] = 'groups:invite';
+		}
+		
+		if (empty($forbidden_items)) {
+			return;
+		}
 		
 		return self::removeMenuItemsFromMenu($return_value, $forbidden_items);
 	}
@@ -25,12 +31,12 @@ class Menus {
 	/**
 	 * Remove unwanted menu items from the menu
 	 *
-	 * @param string $hook         the name of the hook
-	 * @param string $type         the type of the hook
-	 * @param int    $return_value current return value
-	 * @param array  $params       supplied params
+	 * @param string          $hook         the name of the hook
+	 * @param string          $type         the type of the hook
+	 * @param \ElggMenuItem[] $return_value current return value
+	 * @param array           $params       supplied params
 	 *
-	 * @return array
+	 * @return \ElggMenuItem[]
 	 */
 	public static function filterCleanup($hook, $type, $return_value, $params) {
 		$forbidden_items = [
@@ -43,12 +49,12 @@ class Menus {
 	/**
 	 * Remove unwanted menu items from the menu
 	 *
-	 * @param string $hook         the name of the hook
-	 * @param string $type         the type of the hook
-	 * @param int    $return_value current return value
-	 * @param array  $params       supplied params
+	 * @param string          $hook         the name of the hook
+	 * @param string          $type         the type of the hook
+	 * @param \ElggMenuItem[] $return_value current return value
+	 * @param array           $params       supplied params
 	 *
-	 * @return array
+	 * @return \ElggMenuItem[]
 	 */
 	public static function topbarCleanup($hook, $type, $return_value, $params) {
 		$forbidden_items = [
@@ -61,12 +67,12 @@ class Menus {
 	/**
 	 * Remove unwanted menu items from the menu
 	 *
-	 * @param string $hook         the name of the hook
-	 * @param string $type         the type of the hook
-	 * @param int    $return_value current return value
-	 * @param array  $params       supplied params
+	 * @param string          $hook         the name of the hook
+	 * @param string          $type         the type of the hook
+	 * @param \ElggMenuItem[] $return_value current return value
+	 * @param array           $params       supplied params
 	 *
-	 * @return array
+	 * @return \ElggMenuItem[]
 	 */
 	public static function userHoverCleanup($hook, $type, $return_value, $params) {
 		$forbidden_items = [
